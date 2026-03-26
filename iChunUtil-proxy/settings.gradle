@@ -1,0 +1,36 @@
+// Proxy settings for iChunUtil composite build.
+// Only exposes fabric and common modules — forge and neoforge are excluded
+// because ForgeGradle 6.x and NeoForge Gradle 7.x are incompatible with Gradle 9.x.
+// This proxy delegates to the actual iChunUtil project sources.
+
+pluginManagement {
+	repositories {
+		maven {
+			name = 'Fabric'
+			url = 'https://maven.fabricmc.net/'
+		}
+		maven {
+			name = 'Parchment'
+			url = 'https://maven.parchmentmc.org/'
+		}
+		maven {
+			name = 'Spongepowered (Mixin)'
+			url = 'https://repo.spongepowered.org/repository/maven-public/'
+		}
+		maven {
+			name = 'ModPublisher https://github.com/firstdarkdev/modpublisher'
+			url "https://maven.firstdark.dev/releases"
+		}
+		mavenCentral()
+		gradlePluginPortal()
+	}
+}
+
+plugins {
+	id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
+
+rootProject.name = "ichunutil"
+
+include 'common'
+include 'fabric'

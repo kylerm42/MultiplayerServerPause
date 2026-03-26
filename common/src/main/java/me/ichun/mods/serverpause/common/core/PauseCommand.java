@@ -7,13 +7,15 @@ import me.ichun.mods.serverpause.common.ServerPause;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.permissions.Permission;
+import net.minecraft.server.permissions.PermissionLevel;
 
 public class PauseCommand
 {
     private static final SimpleCommandExceptionType ALREADY_PAUSED = new SimpleCommandExceptionType(Component.translatable("commands.pause.alreadyPaused"));
 
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(Commands.literal("pause").requires(p -> p.hasPermission(ServerPause.config.commandPermissionLevel))
+        dispatcher.register(Commands.literal("pause").requires(p -> p.permissions().hasPermission(new Permission.HasCommandLevel(PermissionLevel.byId(ServerPause.config.commandPermissionLevel))))
             .executes(context -> {
                 if(ServerPause.eventHandlerServer.isPaused && !ServerPause.eventHandlerServer.forcePause)
                 {

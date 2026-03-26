@@ -8,7 +8,7 @@ import me.ichun.mods.serverpause.common.core.Config;
 import me.ichun.mods.serverpause.common.core.EventHandlerServer;
 import me.ichun.mods.serverpause.common.network.packet.PacketClientPause;
 import me.ichun.mods.serverpause.common.network.packet.PacketServerPause;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,7 +25,7 @@ public abstract class ServerPause
             PacketClientPause.class,
             PacketServerPause.class
     };
-    public static final ResourceLocation CHANNEL_ID = ResourceLocation.fromNamespaceAndPath(MOD_ID, "channel");
+    public static final Identifier CHANNEL_ID = Identifier.fromNamespaceAndPath(MOD_ID, "channel");
     public static PacketChannel channel;
 
     public static ServerPause modProxy;

@@ -2,7 +2,7 @@ package me.ichun.mods.serverpause.compat;
 
 import com.mojang.logging.LogUtils;
 import me.ichun.mods.serverpause.common.ServerPause;
-import net.minecraft.Util;
+import net.minecraft.util.Util;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 

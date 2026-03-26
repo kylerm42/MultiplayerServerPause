@@ -5,7 +5,7 @@ import me.ichun.mods.serverpause.common.ServerPause;
 import me.ichun.mods.serverpause.compat.CompatHandler;
 import me.ichun.mods.serverpause.mixin.MinecraftServerAccessorMixin;
 import me.ichun.mods.serverpause.mixin.ServerGamePacketListenerImplAccessorMixin;
-import net.minecraft.Util;
+import net.minecraft.util.Util;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.dedicated.DedicatedServer;
 import net.minecraft.server.level.ServerPlayer;

@@ -44,7 +44,7 @@ public class EventHandlerServer
             return; //don't track the "pause state" of fake players.
         }
 
-        pauseState.put(player.getGameProfile().getId(), false);
+        pauseState.put(player.getGameProfile().id(), false);
         checkAndUpdatePauseState();
         //send message if config for per-player
         if(!(!ServerPause.modProxy.getServer().isDedicatedServer() && pauseState.size() == 1) && ServerPause.config.sendChatMessageWhenPlayerPauseStateChanges)
@@ -77,17 +77,17 @@ public class EventHandlerServer
 
     public void onPlayerLogout(ServerPlayer player)
     {
-        pauseState.remove(player.getGameProfile().getId());
+        pauseState.remove(player.getGameProfile().id());
         checkAndUpdatePauseState();
     }
 
     public void updatePlayerState(Player player, boolean paused)
     {
-        Boolean wasPaused = pauseState.put(player.getGameProfile().getId(), paused);
+        Boolean wasPaused = pauseState.put(player.getGameProfile().id(), paused);
         //send message if config for per-player
         if(ServerPause.modProxy.getServer() != null && !(!ServerPause.modProxy.getServer().isDedicatedServer() && pauseState.size() == 1) && ServerPause.config.sendChatMessageWhenPlayerPauseStateChanges && (wasPaused == null || wasPaused != paused))
         {
-            String playerName = player.getGameProfile().getName();
+            String playerName = player.getGameProfile().name();
             int pauseCount = 0;
             for(Map.Entry<UUID, Boolean> e : pauseState.entrySet())
             {

@@ -25,6 +25,7 @@ loom {
     if (hasMixins) {
         mixin {
             defaultRefmapName = "${project.mod_id}.refmap.json"
+            useLegacyMixinAp = true
         }
     }
 }

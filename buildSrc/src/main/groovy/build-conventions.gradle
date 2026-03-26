@@ -45,7 +45,7 @@ if (!isAnAllCompositeBuild && file("${actualRootDir}/../AllChangelogs").exists()
     }
 }
 else {
-    ext.set("mod_version", "Unknown!")
+    ext.set("mod_version", "Unknown")
 }
 
 def javaVersion = JavaVersion.VERSION_21
@@ -313,7 +313,7 @@ if (hasApi) {
 
         if (project.hasProperty('key_store')) {
             doLast {
-                def jarFile = file("${apiJar.archivePath}")
+                def jarFile = apiJar.archiveFile.get().asFile
                 if (jarFile.exists()) {
                     ant.signjar(
                             jar: jarFile,
@@ -353,7 +353,7 @@ if (hasApi) {
 if (project.hasProperty("key_store")) {
     def signJar = tasks.register("signJar") {
         doLast {
-            def jarFile = isFabric ? file("${remapJar.archivePath}") : file("${jar.archivePath}")
+            def jarFile = isFabric ? remapJar.archiveFile.get().asFile : jar.archiveFile.get().asFile
             if (jarFile.exists()) {
                 ant.signjar(
                         jar: jarFile,
